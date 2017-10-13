@@ -1,11 +1,11 @@
 /**
  * 
  */
-package java.piscine;
+package piscine;
 
 /**
  * @author vabois
- * @date 05/10/2017
+ * 
  */
 public class BasketPool {
 	

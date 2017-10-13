@@ -3,7 +3,7 @@
  * pour les pool 
  * de ressources
  */
-package java.piscine;
+package piscine;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
