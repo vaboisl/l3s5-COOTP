@@ -4,13 +4,14 @@
 package action;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author vabois
  * 
  */
 public abstract class Scheduler extends Action {
-	private List<Action> subActions;
+	private List<Action> subActions = new ArrayList<Action>();
 	
 	public Scheduler () {
 		super(null);
@@ -38,7 +39,7 @@ public abstract class Scheduler extends Action {
 			e.printStackTrace();
 		}
 		if(action.isFinished()) {
-			this.removeAction(action);
+			this.removeAction();
 		}
 	}
 	
@@ -46,7 +47,7 @@ public abstract class Scheduler extends Action {
 		return subActions.isEmpty();
 	}
 	
-	protected abstract void removeAction (Action a) ;
+	protected abstract void removeAction () ;
 	
 	protected abstract Action nextAction () ;
 	

@@ -9,10 +9,10 @@ import java.util.List;
  * @author vabois
  *
  */
-public abstract class RessourcePool {
-	protected List<Ressource> pool;
+public abstract class RessourcePool<R> {
+	protected List<R> pool;
 	
-	public Ressource provideRessource () {
+	public R provideRessource () {
 		return null;
 	}
 	

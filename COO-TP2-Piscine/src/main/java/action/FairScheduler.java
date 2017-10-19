@@ -12,13 +12,27 @@ import java.util.List;
 public class FairScheduler extends Scheduler {
 	protected int currentActionPosition;
 	
-	protected void removeAction (Action a) {
+	public FairScheduler () {
+		super(null);
+	}
+	
+	public FairScheduler (String m) {
+		super(m);
+	}
+	
+	protected void removeAction () {
 		List<Action> sub = getSubActions();
-		sub.remove(sub.indexOf(a));
+		sub.remove(sub.indexOf(currentActionPosition));
 	}
 	
 	protected Action nextAction () {
-		return null;
+		if (currentActionPosition == this.getSubActions().size()-1) {
+			currentActionPosition = 0;
+			return this.getSubActions().get(this.getSubActions().size()-1);
+		} else {
+			currentActionPosition++;
+			return this.getSubActions().get(currentActionPosition-1);
+		}
 	}
 	
 }

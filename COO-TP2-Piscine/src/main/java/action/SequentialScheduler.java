@@ -17,7 +17,7 @@ public class SequentialScheduler extends Scheduler {
 		super(m);
 	}
 	
-	protected void removeAction (Action a) {
+	protected void removeAction () {
 		this.getSubActions().remove(0);
 	}
 	

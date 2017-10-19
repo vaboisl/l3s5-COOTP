@@ -8,7 +8,7 @@ package action;
  * 
  */
 public abstract class Action {
-	protected ActionState state;
+	protected ActionState state = ActionState.READY;
 	protected String msg; /* pour affichage */
 	
 	public Action () {}
