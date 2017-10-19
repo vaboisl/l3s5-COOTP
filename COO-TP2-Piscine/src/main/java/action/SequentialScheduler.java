@@ -9,20 +9,20 @@ package action;
  */
 public class SequentialScheduler extends Scheduler {
 	
-	public void addAction (Action a) {
-		
+	public SequentialScheduler () {
+		super(null);
 	}
 	
-	public void reallyDoStep () {
-		
+	public SequentialScheduler (String m) {
+		super(m);
 	}
 	
 	protected void removeAction (Action a) {
-		// ???
+		this.getSubActions().remove(0);
 	}
 	
 	protected Action nextAction () {
-		return null;
+		return this.getSubActions().get(0);
 	}
 	
 }

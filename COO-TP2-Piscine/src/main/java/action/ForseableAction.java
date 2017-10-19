@@ -8,14 +8,21 @@ package action;
  * 
  */
 public class ForseableAction extends Action {
-	private boolean done = false;
+	private int waitingTime;
 	
-	public void reallyDoStep () {
-		
+	public ForseableAction (int t) { this(null,t); }
+	
+	public ForseableAction (String m, int t) {
+		super(m);
+		this.waitingTime = t;
 	}
 	
-	public boolean stopCondition () {
-		return this.done;
+	protected void reallyDoStep () {
+		this.waitingTime--;
+	}
+	
+	protected boolean stopCondition () {
+		return this.waitingTime == 0;
 	}
 	
 }

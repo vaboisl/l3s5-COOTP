@@ -10,15 +10,7 @@ import java.util.List;
  * 
  */
 public class FairScheduler extends Scheduler {
-	private int currentActionPosition;
-	
-	public void addAction (Action a) {
-		
-	}
-	
-	public void reallyDoStep () {
-		
-	}
+	protected int currentActionPosition;
 	
 	protected void removeAction (Action a) {
 		List<Action> sub = getSubActions();
