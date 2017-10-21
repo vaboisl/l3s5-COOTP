@@ -10,4 +10,6 @@ package piscine;
  */
 public interface Ressource {
 	public String description();
+	public boolean isGiven();
+	public void setStatus(boolean state);
 }

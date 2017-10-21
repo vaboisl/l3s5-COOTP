@@ -7,7 +7,7 @@ package piscine;
  * @author vabois
  * 
  */
-public abstract class RessourceUser<R> {
+public abstract class RessourceUser<R extends Ressource> {
 	protected R ressource;
 	
 	public void setRessource (R r) {
