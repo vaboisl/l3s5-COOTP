@@ -5,11 +5,13 @@ package action;
 
 import java.util.List;
 
+import piscine.Ressource;
+
 /**
  * @author vabois
  * 
  */
-public class FairScheduler extends Scheduler {
+public class FairScheduler<R extends Ressource> extends Scheduler {
 	protected int currentActionPosition;
 	
 	public FairScheduler () {
@@ -18,6 +20,19 @@ public class FairScheduler extends Scheduler {
 	
 	public FairScheduler (String m) {
 		super(m);
+	}
+	
+	protected void reallyDoStep () {
+		Swimmer<R> action = (Swimmer<R>)(this.nextAction());
+		System.out.println(action.getName() + "'s turn");
+		try {
+			action.doStep();
+		} catch (ActionFinishedException e) {
+			e.printStackTrace();
+		}
+		if (action.isFinished()) {
+			this.removeAction();
+		}
 	}
 	
 	protected void removeAction () {

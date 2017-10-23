@@ -7,8 +7,13 @@ package piscine;
  * @author vabois
  * 
  */
-public abstract class RessourceUser<R extends Ressource> {
+public class RessourceUser<R extends Ressource> {
 	protected R ressource;
+	protected String name;
+	
+	public RessourceUser (String name) {
+		this.name = name;
+	}
 	
 	public void setRessource (R r) {
 		ressource = r;
@@ -20,6 +25,10 @@ public abstract class RessourceUser<R extends Ressource> {
 	
 	public void resetRessource () {
 		ressource = null;
+	}
+	
+	protected String getName () {
+		return this.name;
 	}
 	
 }

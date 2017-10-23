@@ -22,7 +22,7 @@ public class TakeRessourceAction<R extends Ressource> extends RessourceAction<R>
 	
 	protected void reallyDoStep () {
 		try {
-			System.out.println(" trying to take ressource from ");
+			System.out.print(" trying to take ressource from ");
 			R r = this.pool.provideRessource();
 			System.out.println("... success");
 			this.user.setRessource(r);

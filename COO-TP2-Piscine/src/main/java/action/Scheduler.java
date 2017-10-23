@@ -38,13 +38,13 @@ public abstract class Scheduler extends Action {
 		} catch (ActionFinishedException e) {
 			e.printStackTrace();
 		}
-		if(action.isFinished()) {
+		if (action.isFinished()) {
 			this.removeAction();
 		}
 	}
 	
 	public boolean stopCondition () {
-		return subActions.isEmpty();
+		return this.subActions.isEmpty();
 	}
 	
 	protected abstract void removeAction () ;
