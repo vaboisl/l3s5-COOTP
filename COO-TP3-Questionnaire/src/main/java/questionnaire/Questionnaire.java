@@ -20,11 +20,17 @@ public class Questionnaire {
 	}
 	
 	public void askAll () {
+		for (Question q : this.questions) {
+			System.out.println(q.getText());
+			// saisit la réponse tant qu'elle est invalide 
+			// ... 
+		}
+		
 		
 	}
 	
 	public void addQuestion (Question q) {
-		
+		this.questions.add(q);
 	}
 	
 }
