@@ -18,7 +18,7 @@ public class YesNoAnswer extends Answer {
 	}
 	
 	public String instructions () {
-		return "(oui/non)";
+		return "(oui/non) ";
 	}
 	
 	@Override

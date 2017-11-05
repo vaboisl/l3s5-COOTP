@@ -23,7 +23,7 @@ public class NumericalAnswer extends Answer {
 	}
 	
 	public String instructions () {
-		return "(numerique)";
+		return "(numerique) ";
 	}
 	
 	@Override

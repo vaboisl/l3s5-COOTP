@@ -18,7 +18,7 @@ public class TextAnswer extends Answer {
 	}
 	
 	public String instructions () {
-		return "(symbolique)";
+		return "(symbolique) ";
 	}
 	
 	@Override

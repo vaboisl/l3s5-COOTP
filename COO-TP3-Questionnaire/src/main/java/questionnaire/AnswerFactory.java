@@ -3,6 +3,9 @@
  */
 package questionnaire;
 
+import java.util.List;
+import java.util.LinkedList;
+
 /**
  * @author vabois
  *
@@ -20,6 +23,16 @@ public class AnswerFactory {
 		} else {
 			return null;
 		}
+	}
+	
+	public MultiAnswer buildMultiAnswer (String answer) {
+		List<String> rep = new LinkedList<String>();
+		// parse la chaîne de texte 
+		String[] tokens = answer.split(" ; ");
+		for (int i = 0; i < tokens.length; i++) {
+			rep.add(tokens[i]);
+		}
+		return new MultiAnswer(rep);
 	}
 	
 }
