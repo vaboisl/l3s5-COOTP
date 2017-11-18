@@ -23,7 +23,11 @@ public class YesNoAnswer extends Answer {
 	
 	@Override
 	public String toString () {
-		return this.value + " : YesNoAnswer";
+		if (this.getValue() == YesNo.oui) {
+			return "oui";
+		} else {
+			return "non";
+		}
 	}
 	
 }

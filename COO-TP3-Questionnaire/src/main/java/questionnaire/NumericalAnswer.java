@@ -28,7 +28,7 @@ public class NumericalAnswer extends Answer {
 	
 	@Override
 	public String toString () {
-		return this.value + " : NumericalAnswer";
+		return this.getValue().toString();
 	}
 	
 }

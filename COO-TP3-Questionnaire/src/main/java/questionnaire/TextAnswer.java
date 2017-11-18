@@ -23,7 +23,7 @@ public class TextAnswer extends Answer {
 	
 	@Override
 	public String toString () {
-		return this.value + " : TextAnswer";
+		return (String) this.getValue(); 
 	}
 	
 }

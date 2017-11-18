@@ -23,7 +23,7 @@ public abstract class Answer<T> {
 	}
 	
 	public boolean isCorrect (String s) {
-		return s.equals((String)this.value);
+		return s.equals(this.toString());
 	}
 	
 	@Override
