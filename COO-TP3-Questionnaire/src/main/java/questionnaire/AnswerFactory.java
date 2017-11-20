@@ -5,6 +5,7 @@ package questionnaire;
 
 import java.util.List;
 import java.util.LinkedList;
+import java.lang.reflect.Constructor;
 
 /**
  * @author vabois
@@ -13,18 +14,14 @@ import java.util.LinkedList;
 public class AnswerFactory {
 	public static final AnswerFactory FACTORY = new AnswerFactory();
 	
-	public Answer<?> buildAnswer (String answer) {
-		if (new NumericalAnswer(0).accepts(answer)) {
-			return new NumericalAnswer(new Integer(answer));
-		} else if (new YesNoAnswer(YesNo.oui).accepts(answer)) {
-			return new YesNoAnswer(YesNo.valueOf(answer));
-		} else if (new TextAnswer("").accepts(answer)) {
-			return new TextAnswer(answer);
-		} else {
-			return null;
-		}
+	public Answer<?> buildAnswer (String answerClassName, String answerText) throws Exception {
+		Class<?> c = Class.forName(answerClassName);
+		Constructor<?> ctr = c.getConstructor(String.class);
+		Answer<?> a = (Answer<?>) ctr.newInstance(answerText);
+		return a;
 	}
 	
+	/* Theorically not anymore needed */
 	public MultiAnswer buildMultiAnswer (String answer) {
 		List<String> rep = new LinkedList<String>();
 		// parse la chaîne de texte 

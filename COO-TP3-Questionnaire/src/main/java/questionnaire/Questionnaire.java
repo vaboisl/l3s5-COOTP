@@ -47,10 +47,10 @@ public class Questionnaire {
 		this.questions.add(q);
 	}
 	
-	public static void main (String[] args) {
+	public static void main (String[] args) throws Exception {
 		QuestionnaireFactory qf = new QuestionnaireFactory();
 		try {
-			Questionnaire q = qf.createQuestionnaire("\\Java\\maven-projects\\l3s5-COOTP\\COO-TP3-Questionnaire\\target\\classes\\questionnaire\\question_tolkien.txt");
+			Questionnaire q = qf.createQuestionnaire(".\\src\\question_tolkien.txt");
 			q.askAll();
 		} catch (IOException e) {
 			e.printStackTrace();
