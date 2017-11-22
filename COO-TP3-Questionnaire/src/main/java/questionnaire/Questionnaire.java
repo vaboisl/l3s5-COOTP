@@ -29,6 +29,7 @@ public class Questionnaire {
 			// saisit la réponse tant qu'elle est invalide 
 			String userAnswer = sc.next();
 			while (! q.getRightAnswer().accepts(userAnswer)) {
+				System.out.print(q.getRightAnswer().instructions());
 				userAnswer = sc.next();
 			}
 			q.setUserAnswer(userAnswer);
@@ -50,7 +51,7 @@ public class Questionnaire {
 	public static void main (String[] args) throws Exception {
 		QuestionnaireFactory qf = new QuestionnaireFactory();
 		try {
-			Questionnaire q = qf.createQuestionnaire(".\\src\\question_tolkien.txt");
+			Questionnaire q = qf.createQuestionnaire("question_tolkien.txt");
 			q.askAll();
 		} catch (IOException e) {
 			e.printStackTrace();

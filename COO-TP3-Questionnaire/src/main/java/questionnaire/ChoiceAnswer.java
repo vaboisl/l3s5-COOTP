@@ -16,7 +16,7 @@ public class ChoiceAnswer extends Answer {
 		super(l);
 	}
 	
-	ChoiceAnswer (String s) {
+	public ChoiceAnswer (String s) {
 		super(s);
 	}
 	
@@ -67,18 +67,7 @@ public class ChoiceAnswer extends Answer {
 	
 	@Override
 	public String toString () {
-		String[] values = ((String) this.value).split(" | ");
-		String s = "[";
-		for (int i = 0; i < values.length; i++) {
-			s += values[i];
-			if (i != values.length-1) {
-				s += " | ";
-			} else {
-				s += "]";
-			}
-		}
-		s += " : ChoiceAnswer";
-		return s;
+		return ((String) this.value).split(" | ")[0];
 	}
 	
 }

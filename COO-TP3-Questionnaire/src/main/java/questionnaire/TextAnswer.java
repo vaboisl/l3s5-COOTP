@@ -9,7 +9,7 @@ package questionnaire;
  */
 public class TextAnswer extends Answer {
 	
-	TextAnswer (String answer) {
+	public TextAnswer (String answer) {
 		super(answer);
 	}
 	
