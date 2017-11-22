@@ -10,34 +10,30 @@ import java.util.Iterator;
  * @author vabois
  *
  */
-public class MultiAnswer extends Answer {
+public class ChoiceAnswer extends Answer {
 	
-	MultiAnswer (List<String> reps) {
-		super(reps);
+	
+	ChoiceAnswer (String s) {
+		super(s);
+		// ??
 	}
 	
 	public boolean accepts (String s) {
-		return ! s.contains(" ");
+		return true;
 	}
 	
 	public String instructions () {
-		return "(" + ((List<String>) this.value).size() + " réponses possibles) ";
-	}
-	
-	@Override
-	public String toString () {
-		String s = "[";
+		String s = "(";
 		Iterator<String> it = ((List<String>) this.value).iterator();
 		while ( it.hasNext() ) {
 			String elmt = it.next();
 			s += elmt;
 			if ( it.hasNext() ) {
-				s += " ; ";
+				s += "   ";
 			} else {
-				s += "]";
+				s += ")";
 			}
 		}
-		s += " : MultiAnswer";
 		return s;
 	}
 	

@@ -27,10 +27,10 @@ public class Question<T> {
 		return this.text;
 	}
 	
-	
+	public int getNbPoints () { return  this.nbPoints; }
 	
 	public boolean isUserAnswerCorrect () {
-		return this.userAnswer.equals(this.rightAnswer);
+		return this.rightAnswer.isCorrect(userAnswer);
 	}
 	
 	public void setUserAnswer (String answer) {
