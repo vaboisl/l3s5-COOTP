@@ -3,10 +3,10 @@
  */
 package questionnaire;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 
 /**
  * @author vabois
@@ -26,13 +26,12 @@ public class Questionnaire {
 		for (Question q : this.questions) {
 			System.out.println(q.getText());
 			System.out.print(q.getRightAnswer().instructions());
-			String uAnswer = sc.next();
 			// saisit la réponse tant qu'elle est invalide 
-			while (!q.getRightAnswer().accepts(uAnswer)) {
-				System.out.print(q.getRightAnswer().instructions());
-				uAnswer = sc.next();
+			String userAnswer = sc.next();
+			while (! q.getRightAnswer().accepts(userAnswer)) {
+				userAnswer = sc.next();
 			}
-			q.setUserAnswer(uAnswer);
+			q.setUserAnswer(userAnswer);
 			if (q.isUserAnswerCorrect()) {
 				System.out.println("correct (" + q.getNbPoints() + " point(s))");
 				this.nb_points += q.getNbPoints();
@@ -40,18 +39,19 @@ public class Questionnaire {
 				System.out.println("incorrect, la bonne réponse est : " + q.getRightAnswer().toString());
 			}
 		}
-		System.out.println("Vous avez " + this.nb_points + " points.");
-		
+		sc.close();
+		System.out.println("\nVous avez " + this.nb_points + " points.");
 	}
 	
 	public void addQuestion (Question q) {
 		this.questions.add(q);
 	}
 	
-	public static void main (String[] args) {
+	public static void main (String[] args) throws Exception {
+		QuestionnaireFactory qf = new QuestionnaireFactory();
 		try {
-			Questionnaire quest = (new QuestionnaireFactory()).createQuestionnaire("/home/l3miage/vabois/Documents/COO/myGitProjects/l3s5-COOTP/COO-TP3-Questionnaire/src/main/java/questionnaire/Source.txt");
-			quest.askAll();
+			Questionnaire q = qf.createQuestionnaire(".\\src\\question_tolkien.txt");
+			q.askAll();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -13,6 +13,10 @@ public class NumericalAnswer extends Answer {
 		super(i);
 	}
 	
+	NumericalAnswer (String s) {
+		super(new Integer(s));
+	}
+	
 	public boolean accepts (String s) {
 		try {
 			Integer.parseInt(s);
@@ -28,7 +32,7 @@ public class NumericalAnswer extends Answer {
 	
 	@Override
 	public String toString () {
-		return this.value.toString();
+		return this.getValue().toString();
 	}
 	
 }

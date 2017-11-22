@@ -13,6 +13,10 @@ public class YesNoAnswer extends Answer {
 		super(yesno);
 	}
 	
+	YesNoAnswer (String s) {
+		super(YesNo.valueOf(s));
+	}
+	
 	public boolean accepts (String s) {
 		return s.equals("oui") ^ s.equals("non");
 	}
@@ -23,10 +27,11 @@ public class YesNoAnswer extends Answer {
 	
 	@Override
 	public String toString () {
-		if (this.value == YesNo.oui) {
+		if (this.getValue() == YesNo.oui) {
 			return "oui";
+		} else {
+			return "non";
 		}
-		return "non";
 	}
 	
 }

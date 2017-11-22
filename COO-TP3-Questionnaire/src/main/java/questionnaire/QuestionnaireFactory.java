@@ -15,30 +15,31 @@ import java.io.FileReader;
  */
 public class QuestionnaireFactory {
 	
-	public Question createQuestion (String text, String answer, String points) throws IOException {
+	public Question createQuestion (String text, String answer, String points, String className) throws Exception, IOException {
 		try {
 			int nbPoints = Integer.parseInt(points);
-			return new Question(text, AnswerFactory.FACTORY.buildAnswer(answer), nbPoints);
+			return new Question(text, AnswerFactory.FACTORY.buildAnswer(className,answer), nbPoints);
 		} catch (NumberFormatException e) {
 			throw new IOException("bad format");
 		}
 	}
 	
-	public Questionnaire createQuestionnaire (String fileName) throws IOException {
+	public Questionnaire createQuestionnaire (String fileName) throws Exception, IOException {
 		Questionnaire questionnaire = new Questionnaire();
 		File source = new File(fileName);
 		BufferedReader in = null;
 		try {
 			in = new BufferedReader(new FileReader(source));
 			String text;
-			// read blocks of 3 lines : text, answer and number of points 
+			// read blocks of 4 lines : text, answer, number of points and name of answer class 
 			while ((text = in.readLine()) != null) {
 				String answer = in.readLine();
 				String nbPoints = in.readLine();
-				if (answer == null || nbPoints == null) {
+				String className = in.readLine();
+				if (answer == null || nbPoints == null || className == null) {
 					throw new IOException("bad format");
 				}
-				questionnaire.addQuestion(this.createQuestion(text, answer, nbPoints));
+				questionnaire.addQuestion(this.createQuestion(text, answer, nbPoints, className));
 			}
 		} catch (FileNotFoundException e) {
 			throw new IOException(e);
