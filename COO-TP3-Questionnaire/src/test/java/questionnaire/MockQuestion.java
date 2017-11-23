@@ -7,14 +7,12 @@ package questionnaire;
  * @author vabois
  *
  */
-class MockQuestion extends Question {
-	int nbAskedQuestions = 3;
-	int nbAcceptedQuestions = 0;
+public class MockQuestion extends Question {
+	int nbAskedQuestions = 7;
 	
-	MockQuestion (String text, Answer<?> answer, int nbPoints) {
+	
+	protected MockQuestion (String text, Answer<?> answer, int nbPoints) {
 		super(text,answer,nbPoints);
 	}
-	
-	
 	
 }
