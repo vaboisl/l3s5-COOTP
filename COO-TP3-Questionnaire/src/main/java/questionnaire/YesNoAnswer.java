@@ -13,7 +13,7 @@ public class YesNoAnswer extends Answer {
 		super(yesno);
 	}
 	
-	YesNoAnswer (String s) {
+	public YesNoAnswer (String s) {
 		super(YesNo.valueOf(s));
 	}
 	

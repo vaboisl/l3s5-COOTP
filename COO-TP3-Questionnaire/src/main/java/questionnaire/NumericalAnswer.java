@@ -13,7 +13,7 @@ public class NumericalAnswer extends Answer {
 		super(i);
 	}
 	
-	NumericalAnswer (String s) {
+	public NumericalAnswer (String s) {
 		super(new Integer(s));
 	}
 	

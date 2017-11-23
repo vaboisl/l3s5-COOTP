@@ -11,8 +11,12 @@ import java.util.List;
  */
 public class MultiAnswer extends Answer {
 	
-	MultiAnswer (List<String> reps) {
-		super(reps);
+	MultiAnswer (List<String> l) {
+		super(l);
+	}
+	
+	public MultiAnswer (String s) {
+		super(s);
 	}
 	
 	public boolean accepts (String s) {
@@ -37,16 +41,13 @@ public class MultiAnswer extends Answer {
 	@Override
 	public String toString () {
 		String[] values = ((String) this.value).split(" ; ");
-		String s = "[";
+		String s = "";
 		for (int i = 0; i < values.length; i++) {
 			s += values[i];
 			if (i != values.length-1) {
-				s += " ; ";
-			} else {
-				s += "]";
+				s += " ou ";
 			}
 		}
-		s += " : MultiAnswer";
 		return s;
 	}
 	

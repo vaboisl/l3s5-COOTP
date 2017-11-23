@@ -16,7 +16,8 @@ public class AnswerFactory {
 	
 	public Answer<?> buildAnswer (String answerClassName, String answerText) throws Exception {
 		Class<?> c = Class.forName(answerClassName);
-		Constructor<?> ctr = c.getConstructor(String.class);
+		Class cls[] = new Class[] { String.class };
+		Constructor<?> ctr = c.getConstructor(cls);
 		Answer<?> a = (Answer<?>) ctr.newInstance(answerText);
 		return a;
 	}
