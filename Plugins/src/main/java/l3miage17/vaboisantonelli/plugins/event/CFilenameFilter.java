@@ -7,10 +7,10 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 
-public class ClassFilenameFilter implements FilenameFilter {
+public class CFilenameFilter implements FilenameFilter {
 	
 	public boolean accept (File dir, String filename) {
-		return filename.endsWith(".class");
+		return filename.startsWith("C");
 	}
 	
 }

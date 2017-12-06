@@ -5,6 +5,7 @@ package l3miage17.vaboisantonelli.plugins.observer;
 
 import java.util.ArrayList;
 
+import java.io.File;
 import java.io.FilenameFilter;
 
 /**
@@ -12,13 +13,13 @@ import java.io.FilenameFilter;
  *
  */
 public class FileChecker {
-	FilenameFilter filter;
-	String filePath;
+	protected FilenameFilter filter;
+	protected File dirPath;
 	private ArrayList<FileListener> fileListeners = new ArrayList<FileListener>();
 	
-	public FileChecker (FilenameFilter pFilter, String pPath) {
+	public FileChecker (FilenameFilter pFilter, File pPath) {
 		this.filter = pFilter;
-		this.filePath = pPath;
+		this.dirPath = pPath;
 	}
 	
 	public synchronized void addFileListener (FileListener pListener) {
@@ -27,9 +28,20 @@ public class FileChecker {
 	}
 	
 	public synchronized void removeFileListener (FileListener pListener) {
-		if (this.fileListeners.contains(pListener)) { this.fileListeners.remove(pListener); }
+		this.fileListeners.remove(pListener);
 	}
 	
+	private void fireFileAdded () {
+		ArrayList<FileListener> fListeners = (ArrayList<FileListener>) this.fileListeners.clone();
+		if (fListeners.size() == 0) { return ; }
+		FileEvent event = new FileEvent(this);
+		for (FileListener listener : fListeners) {
+			listener.fileAdded(event);
+		}
+	}
 	
+	public void addFile () {
+		this.fireFileAdded();
+	}
 	
 }
