@@ -55,7 +55,7 @@ public class FileChecker implements ActionListener {
 	}
 	
 	public void actionPerformed (ActionEvent pActionEvent) {
-		String[] classFiles = this.filterContainer.getCName();
+		String[] classFiles = this.filterContainer.getClassName();
 		for (int i = 0; i < classFiles.length; i++) {
 			if (! this.knownFiles.contains(classFiles[i])) {
 				this.addFile(classFiles[i]);
