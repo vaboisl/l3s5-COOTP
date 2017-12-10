@@ -18,4 +18,8 @@ public class FileUpdateActor implements FileListener {
 		System.out.println("nouveau .class : " + pEvent.getFilename() + " détecté");
 	}
 	
+	public void fileRemoved (FileEvent pEvent) {
+		System.out.println(".class  " + pEvent.getFilename() + " supprimé détecté");
+	}
+	
 }

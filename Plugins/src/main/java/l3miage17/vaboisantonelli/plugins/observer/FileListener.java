@@ -11,4 +11,6 @@ public interface FileListener extends java.util.EventListener {
 	
 	public void fileAdded (FileEvent pEvent) ;
 	
+	public void fileRemoved (FileEvent pEvent);
+	
 }

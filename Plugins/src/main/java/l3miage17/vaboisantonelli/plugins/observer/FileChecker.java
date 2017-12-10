@@ -50,19 +50,50 @@ public class FileChecker implements ActionListener {
 		}
 	}
 	
+	private void fireFileRemoved (String pFilename) {
+		ArrayList<FileListener> fListeners = (ArrayList<FileListener>) this.fileListeners.clone();
+		if (fListeners.size() == 0) { return ; }
+		FileEvent event = new FileEvent(this, pFilename);
+		for (FileListener listener : fListeners) {
+			listener.fileRemoved(event);
+		}
+	}
+	
 	public void addFile (String pFilename) {
 		this.fireFileAdded(pFilename);
 	}
 	
+	public void removeFile (String pFilename) {
+		this.fireFileRemoved(pFilename);
+	}
+	
 	public void actionPerformed (ActionEvent pActionEvent) {
 		String[] classFiles = this.filterContainer.getClassName();
+		
+		/* Checking removed files */
+		boolean fileInFolder = false;
+		ArrayList<String> kFiles = (ArrayList<String>) this.knownFiles.clone();
+		for (String filename : kFiles) {
+			fileInFolder = false;
+			for (int i = 0; i < classFiles.length; i++) {
+				if (filename.equals(classFiles[i])) {
+					fileInFolder = true;
+					break;
+				}
+			}
+			if (! fileInFolder) {
+				this.removeFile(filename);
+				this.knownFiles.remove(filename);
+			}
+		}
+		
+		/* Checking new files added */
 		for (int i = 0; i < classFiles.length; i++) {
 			if (! this.knownFiles.contains(classFiles[i])) {
 				this.addFile(classFiles[i]);
 				this.knownFiles.add(classFiles[i]);
 			}
 		}
-		
 	}
 	
 	public static void main (String[] args) throws InterruptedException {
@@ -70,7 +101,7 @@ public class FileChecker implements ActionListener {
 		FileListener fl = new FileUpdateActor(fc);
 		fc.addFileListener(fl);
 		fc.timer.start();
-		Thread.sleep(15000);
+		Thread.sleep(30000);
 	}
 	
 }
